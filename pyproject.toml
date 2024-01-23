@@ -1,0 +1,23 @@
+[project]
+name = "classification"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "HamidBasri", email = "dev.hamidbasri@gmail.com"},
+]
+dependencies = [
+    "fastapi>=0.109.0",
+    "uvicorn>=0.27.0",
+]
+requires-python = "==3.12.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.scripts]
+_.env_file = ".env"
+dev = "python main.py"
+export = "pdm export --no-hashes --prod -o requirements.txt"
