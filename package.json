@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "server-dev": "pip3 install -r requirements.txt && python3 -m uvicorn api.main:app --reload",
+    "server-dev": "pip3 install -r requirements.txt && python3 -m uvicorn api.index:app --reload",
     "client-dev": "next dev",
     "dev": "concurrently \"npm run server-dev\" \"npm run client-dev\"",
     "build": "next build",
@@ -11,6 +11,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "antd": "^5.13.2",
     "concurrently": "^8.2.2",
     "next": "14.1.0",
     "react": "^18",

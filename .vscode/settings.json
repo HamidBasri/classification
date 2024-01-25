@@ -1,0 +1,56 @@
+{
+  "git-blame.gitWebUrl": "",
+  "cSpell.words": [
+    "antd",
+    "Crtl",
+    "dissoc",
+    "juxt",
+    "Lucide",
+    "Outgoers",
+    "pfht",
+    "pidemco",
+    "Popconfirm",
+    "pwht",
+    "reactflow",
+    "Sider",
+    "SSPFHT",
+    "tema",
+    "خطایی",
+    "داده"
+  ],
+  "cSpell.language": "en,fa",
+  "search.exclude": {
+    ".next": true
+  },
+  "prettier.tabWidth": 2,
+  "editor.tabSize": 2,
+  "autoimport.sourceRoot": "./src",
+  "autoimport.filesToScan": "./src/**/*.{js,jsx,ts,tsx}",
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "editor.gotoLocation.multipleTypeDefinitions": "goto",
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "Pidemco",
+      "username": "pidemco",
+      "database": "pidemco_db",
+      "password": "password"
+    }
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "files.watcherExclude": {
+    ".next": true,
+    "node_modules": true
+  },
+  "files.exclude": {
+    "**/.git": false,
+    "**/.git1": true
+  },
+  "ez-semicolon.newline": false,
+  "ez-semicolon.escapeString": false,
+  "prettier.semi": true,
+
+}
