@@ -1,8 +1,6 @@
+import { Button, Flex } from "antd";
 import Image from "next/image";
-
+import { range } from "ramda";
 export default function Home() {
-    return  
-    <div className="App">
-    <Button type="primary">Button</Button>
-  </div>;
+  return <div></div>;
 }
