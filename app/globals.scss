@@ -26,3 +26,15 @@ body {
   }
 } 
 
+
+.flex-center {
+  @apply flex justify-center items-center;
+}
+
+.pb-upload-wrapper {
+  @apply flex gap-5;
+
+  .pb-upload-list {
+    @apply w-full;
+  }
+}

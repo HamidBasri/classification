@@ -1,48 +1,18 @@
 version: "3.8"
 
 services:
-    app:
-        build:
-            context: .
-            target: dev
-            dockerfile: Dockerfile
-        restart: always
-        command: pnpm dev
-        ports:
-            - "${PORT}:3000"
-        volumes:
-            - .:/app
-            - /app/node_modules
-            - /app/.next
-        environment:
-            - NODE_ENV=development
-    mongo:
-        image: mongo:latest
-        container_name: mongodb
-        ports:
-            - "${MONGO_PORT}:${MONGO_PORT}"
-        env_file:
-            - .env
-        volumes:
-            - mongodb_data:/data/db
-        restart: always
-        healthcheck:
-            test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
-            interval: 10s
-            timeout: 10s
-            retries: 3
-    mongo-express:
-        image: mongo-express
-        container_name: mongo-express
-        ports:
-            - "${ME_CONFIG_PORT}:${ME_CONFIG_PORT}"
-        env_file:
-            - .env
-        depends_on:
-            mongo:
-                condition: service_healthy
-        links:
-            - mongo
-
-volumes:
-    mongodb_data:
+  app:
+    build:
+      context: .
+      target: dev
+      dockerfile: Dockerfile
+    restart: always
+    command: pnpm dev
+    ports:
+      - "${PORT}:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NODE_ENV=development

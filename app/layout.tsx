@@ -2,30 +2,31 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.scss";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
-import { Breadcrumb, ConfigProvider, Flex, Layout, Menu, theme } from "antd";
+import {
+  Avatar,
+  Breadcrumb,
+  ConfigProvider,
+  Flex,
+  Layout,
+  Menu,
+  Space,
+  theme,
+} from "antd";
 import { Content, Footer, Header } from "antd/es/layout/layout";
-import { PanelsTopLeft, Shapes, SpellCheck2 } from "lucide-react";
+import { Home, PanelsTopLeft, Shapes, SpellCheck2, User2 } from "lucide-react";
 import Sider from "antd/es/layout/Sider";
-import { createElement } from "react";
+import { createElement, useState } from "react";
 import Paragraph from "antd/es/typography/Paragraph";
+import Text from "antd/es/typography/Text";
 import Title from "antd/es/typography/Title";
 import Link from "next/link";
+import AppSider from "./sider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Classification Demo App",
   description: "This is a demo app created for classification task",
 };
-
-const items = [
-  { icon: Shapes, text: "Image Classification", link: "/image" },
-  { icon: SpellCheck2, text: "Text Classification", link: "/text" },
-].map((item, index) => ({
-  key: String(index + 1),
-  icon: createElement(item.icon),
-  label: <Link href={item.link}>{item.text}</Link>,
-}));
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -41,6 +42,7 @@ export default function RootLayout({
         footerBg: "white",
         bodyBg: "white",
         siderBg: "white",
+        headerHeight: 80,
       },
       Button: {
         colorPrimary: "#104F55",
@@ -56,43 +58,33 @@ export default function RootLayout({
         <body className={`${inter.className}`}>
           <AntdRegistry>
             <Layout className="h-screen">
-              <Header className="border-b-2 border-primary">
-                <div className="demo-logo" />
-                <Menu
-                  theme="dark"
-                  mode="horizontal"
-                  defaultSelectedKeys={["2"]}
-                  items={[]}
-                  style={{ flex: 1, minWidth: 0 }}
-                />
+              <Header className="border-4 border-primary flex justify-between items-center">
+                <Title level={2} className="m-0">
+                  Image (CIFAR-10) and Text (LIAR Fake News) Classification
+                </Title>
+                <Space className="pe-8 ps-4 h-14 bg-gray-100 hover:bg-gray-300 transition-all duration-200 rounded-full">
+                  <Avatar
+                    size={40}
+                    className="flex justify-center items-center"
+                    icon={<User2 />}
+                  />
+                  <Text className="select-none" strong>
+                    Hamid Basri
+                  </Text>
+                </Space>
               </Header>
-              <Content className="overflow-auto">
-                <Layout className="h-full" hasSider>
-                  <Sider
-                    width="400"
-                    breakpoint="lg"
-                    collapsedWidth="0"
-                    className="border-e-2 border-primary"
-                  >
-                    <Title className="my-2 mx-4 pb-2 border-b-2 border-[#104F55]">
-                      <Flex align="center" gap={15}>
-                        <PanelsTopLeft size={32} />
-                        Pages
-                      </Flex>
-                    </Title>
-                    <Menu
-                      mode="inline"
-                      defaultSelectedKeys={["1"]}
-                      items={items}
-                    />
-                  </Sider>
-                  <Content className="p-5"> {children}</Content>
+              <Layout className="overflow-auto" hasSider>
+                <AppSider />
+                <Layout className="h-full">
+                  <Content className="h-full p-5 border-e-4 border-primary overflow-auto">
+                    {children}
+                  </Content>
+                  <Footer className="text-center border-4 border-s-0 border-primary bg-stone-100">
+                    Classification Task ©{new Date().getFullYear()} Created by{" "}
+                    <span className="font-bold">Hamid Basri</span>
+                  </Footer>
                 </Layout>
-              </Content>
-              <Footer className="text-center border-t-2 border-primary">
-                Classification Task ©{new Date().getFullYear()} Created by{" "}
-                <span className="font-bold">Hamid Basri</span>
-              </Footer>
+              </Layout>
             </Layout>
           </AntdRegistry>
         </body>
