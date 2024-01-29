@@ -95,16 +95,16 @@ const Uploader = () => {
   const handleClearAll = useMemoizedFn(() => setFileList([]));
   const handleClassify = useMemoizedFn(async () => {
     const formData = new FormData();
-    fileList.forEach((file, index) => {
+    fileList.forEach((file: any, index: any) => {
       if (file.originFileObj) {
         formData.append(`files`, file.originFileObj);
       }
     });
     await ky
-      .post("http://127.0.0.1:8000/predict-image", {
+      .post("/api/predict-image", {
         body: formData,
       })
-      .then(async (response) => {
+      .then(async (response: any) => {
         const result = await response.json();
         const results = result?.results;
         if (results) {
