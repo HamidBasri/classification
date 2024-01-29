@@ -96,7 +96,9 @@ const Uploader = () => {
   const handleClassify = useMemoizedFn(async () => {
     const formData = new FormData();
     fileList.forEach((file, index) => {
-      formData.append(`files`, file.originFileObj);
+      if (file.originFileObj) {
+        formData.append(`files`, file.originFileObj);
+      }
     });
     await ky
       .post("http://127.0.0.1:8000/predict-image", {
