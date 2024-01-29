@@ -101,7 +101,7 @@ const Uploader = () => {
       }
     });
     await ky
-      .post("/api/predict-image", {
+      .post("http://127.0.0.1:8000/predict-image", {
         body: formData,
       })
       .then(async (response: any) => {

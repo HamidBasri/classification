@@ -8,7 +8,7 @@ RUN apk add --no-cache \
     git \
     curl
 
-RUN apk update && apk --no-cache add python3 py3-pip
+RUN apk update && apk --no-cache add python3=3.9.18 py3-pip
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm fetch
 RUN python3 -m venv /venv
 ENV PATH="/venv/bin:$PATH"
