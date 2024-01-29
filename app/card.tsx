@@ -2,7 +2,13 @@
 
 import React from "react";
 
-const AnimatedCard = ({ title, children }) => {
+const AnimatedCard = ({
+  title,
+  children,
+}: {
+  title?: string;
+  children: any;
+}) => {
   return (
     <div className="bg-cover bg-center h-64 bg-[url('/public/cifar_bg.png)]">
       <div className="p-4 min-w-96">
